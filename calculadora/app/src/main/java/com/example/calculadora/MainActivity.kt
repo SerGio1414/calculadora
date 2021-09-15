@@ -3,8 +3,9 @@ package com.example.calculadora
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
+import androidx.appcompat.app.AppCompatActivity
 
-class MainActivity {
+class MainActivity : AppCompatActivity() {
 
     private var zero: Button? = null
     private var one: Button? = null
@@ -33,7 +34,7 @@ class MainActivity {
     private var val2 = 0.0
     private var ACTION = 0.toChar()
 
-    protected fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         setupUIViews()
@@ -51,32 +52,32 @@ class MainActivity {
             compute()
             ACTION = SUBTRACTION
             result!!.text = "$val1-"
-            info.setText(null)
+            info?.setText(null)
         }
         add!!.setOnClickListener {
             compute()
             ACTION = ADDITION
             result!!.text = "$val1+"
-            info.setText(null)
+            info?.setText(null)
         }
         mul!!.setOnClickListener {
             compute()
             ACTION = MULTIPLICATION
             result!!.text = "$val1*"
-            info.setText(null)
+            info?.setText(null)
         }
         div!!.setOnClickListener {
             compute()
             ACTION = DIVISION
             result!!.text = "$val1/"
-            info.setText(null)
+            info?.setText(null)
         }
         equal!!.setOnClickListener {
             compute()
             ACTION = EQU
             result!!.text = result!!.text.toString() + val2.toString() + "=" + val1.toString()
             // 5 + 4 = 9
-            info.setText(null)
+            info?.setText(null)
         }
         clear!!.setOnClickListener {
             if (info!!.text.length > 0) {
@@ -85,8 +86,8 @@ class MainActivity {
             } else {
                 val1 = Double.NaN
                 val2 = Double.NaN
-                info.setText(null)
-                result.setText(null)
+                info?.setText(null)
+                result?.setText(null)
             }
         }
     }
